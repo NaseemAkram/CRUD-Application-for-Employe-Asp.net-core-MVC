@@ -1,0 +1,38 @@
+﻿@model IEnumerable<CRUD_Application_Asp.net_core_MVC.Models.Image>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class="container">
+    <div class="row">
+       <div class="col-6 offset-3">
+           <table class="table table-bordered">
+               <thead>
+                    <tr class="text-center">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+               </thead>
+               @foreach(var i in Model)
+               {
+                   <tr class="text-center">
+                       <td>@i.Id</td>
+                       <td>@i.Name</td>
+                       <td><img src="@i.ImagePath" height="100px" width="100px" /></td>
+                       <td>
+                           <a class="btn btn-sm btn-danger" asp-action="Delete" asp-controller="Upload" asp-route-id="@i.Id">Delete</a>
+                            <a class="btn btn-sm btn-info" asp-action="Update" asp-controller="Upload" asp-route-id="@i.Id">Update</a>
+
+                       </td>
+                     
+                   </tr>
+               }
+              
+           </table>
+       </div>
+    </div>
+</div>
