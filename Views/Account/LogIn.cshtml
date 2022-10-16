@@ -1,0 +1,63 @@
+﻿@model CRUD_Application_Asp.net_core_MVC.Models.ViewModel.LoginSignUpViewModel
+@{
+    ViewData["Title"] = "LogIn";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+<div class="container">
+    <div class="row mt-lg-5">
+        <div class="col-4 offset-4 border border-primary rounded pl-5 pr-5 pb-5 ">
+            <div class="text-end">
+                <a class="text-light btn btn-primary font-weight-bold" asp-action="SignUp" asp-controller="Account">SignUp</a>
+            </div>
+            <h6 class="text-center text-success"> @TempData["successmessage"]</h6>
+            <form method="post" asp-action="LogIn">
+                <div class="form-group">
+                    <label asp-for="Username"></label>
+                    <input type="text" asp-for="Username" placeholder="Enter user Name" class="form-control" autocomplete="off" />
+                    <span class="text-danger">@TempData["error"]</span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password"></label>
+                    <input id="Password" type="password" asp-for="Password" placeholder="Enter user Name" class="form-control" autocomplete="off" />
+                    <span class="text-danger">@TempData["error"]</span>
+                    <i id="Open" class="fa-solid fa-eye float-end" style="margin-top:-25px; margin-right:6px; cursor:pointer"></i>
+                    <i id="Close" class="fa-solid fa-eye-slash float-end" style="margin-top:-25px; margin-right:6px;display:none;cursor:pointer" ></i>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" asp-for="IsRemember" />
+                    <label asp-for="IsRemember"></label>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn  btn-primary mb-3  float-xl-end" value="LogIn" />
+                </div>
+                <div class="text-center">
+                    <a class="text-primary" asp-action="ForgotUserName">Forgot Username</a>
+                    <a class="text-primary" asp-action="ForgotPassword">Forgot Password</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#Open").click(function () {
+            $("#Open").hide();
+            $("#Close").show();
+            $("#Password").attr("type", "text");
+        });
+        $("#Close").click(function () {
+            $("#Close").hide();
+            $("#Open").show();
+            $("#Password").attr("type", "password");
+        });
+    });
+
+
+</script>
